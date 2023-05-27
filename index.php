@@ -33,7 +33,7 @@
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Riwayat Hitungan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
             </div>
         </div>
@@ -128,6 +128,16 @@
             });
         });
 
+        function clickAngka(hitung){ // memasukkan data history ke layar input kalkulator
+            $("#modal-history").modal('hide');
+            const regex = /-|\+|\*|\%|\^|\//;
+            var pos = hitung.search(regex); // return index position
+            var tempAngka = hitung.substring(0,pos);
+            var inpAngka = hitung.substring(pos, hitung.length);
+            tmp.innerText = tempAngka;
+            input.innerText = inpAngka;
+        }
+
         $(document).ready(function(){
             $('#btn-history').click(function(){ // mengambil data history pada database
                 $('#modal-history').find('.list-group').empty();
@@ -184,6 +194,7 @@
                     }
                 });
             }
+
         });
     </script>
 </body>
